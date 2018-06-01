@@ -58,7 +58,12 @@ install_cli_app(){
 }
 
 echo "按下任意键继续，如需退出，请按Ctrl C"
-read key
-install_homebrew
+# 这里只是用于提示用户，使用Ctrl C退出
+read user_command
+if command -v brew > /dev/ull 2>&1; then
+	continue
+else
+	install_homebrew
+fi
 install_cask_app
 install_cli_app
