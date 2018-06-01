@@ -63,6 +63,7 @@ read user_command
 if command -v brew > /dev/ull 2>&1; then
 	continue
 else
+	echo '您的Mac OS尚未安装homebrew，正准备为您安装🍻'
 	install_homebrew
 fi
 install_cask_app
