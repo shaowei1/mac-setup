@@ -15,7 +15,9 @@ A simple script for installing apps on your Mac
 
 # 使用效果
 > 安装homebrew
-![]()https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png
+
+![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png)
 
 > 安装好homebrew后使用brew安装app
+
 ![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
