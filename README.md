@@ -8,7 +8,14 @@ A simple script for installing apps on your Mac
 # How?
 1. 克隆本仓库到您的电脑
 
-2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`，如有需要，请使用`sudo`。
+2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`
 
 # TODO
 添加用户自定义软件
+
+# 使用效果
+> 安装homebrew
+![]()https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png
+
+> 安装好homebrew后使用brew安装app
+![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
