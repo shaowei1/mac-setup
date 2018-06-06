@@ -18,41 +18,45 @@ install_homebrew(){
 
 # GUI软件包清单
 # 在这里添加或者删除你需要的GUI软件包名称
-# 用于开发的jetbrains公司的产品可能版本较低(commercial projects)
-# 可以在安装以后手动升级
+
+#brew_cask_app_list=(
+#iina
+#alfred
+#google-chrome
+#firefox
+#wireshark
+#etcher
+#telegram-desktop
+#intellij-idea
+#pycharm
+#clion
+#datagrip
+#webstorm
+#)
 
 brew_cask_app_list=(
 iina
 alfred
 google-chrome
-firefox
-wireshark
-etcher
-telegram-desktop
-intellij-idea
-pycharm
-clion
-datagrip
-webstorm
+apple-juice
 )
+
 
 # 安装GUI软件包
 install_cask_app(){
-	for app in brew_cask_app_list; do
+	for app in ${brew_cask_app_list[@]}; do
 		brew cask install $app
 	done
 }
 
 # CLI软件包清单
 brew_cli_app_list=(
-vim
 wget
-mysql
 )
 
 # 安装CLI软件包
 install_cli_app(){
-	for app in brew_cli_app_list;do
+	for app in ${brew_cli_app_list[@]};do
 		brew install $app
 	done
 }
@@ -60,10 +64,10 @@ install_cli_app(){
 echo "按下任意键继续，如需退出，请按Ctrl C"
 # 这里只是用于提示用户，使用Ctrl C退出
 read user_command
-if command -v brew > /dev/ull 2>&1; then
-	continue
+if command -v brew > /dev/null 2>&1; then
+	echo -e '您的Mac已经安装了homebrew，将不会安装新的homebrew，请等待安装进行🍻  \n'
 else
-	echo '您的Mac OS尚未安装homebrew，正准备为您安装🍻'
+	echo '您的Mac OS尚未安装homebrew，正准备为您安装🍻  '
 	install_homebrew
 fi
 install_cask_app
