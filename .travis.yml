@@ -1,0 +1,16 @@
+os: osx
+
+language: C
+
+before_install:
+        - echo " Uninstalling the homebrew"
+        - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+        - echo "Successfully uninstalled the homebrew"
+          
+install: true
+
+script: ./install_app_for_mac.sh
+
+after_success: 
+        - cat < brew list
+        - echo "Build Passed"
