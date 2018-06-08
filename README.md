@@ -10,5 +10,25 @@ A simple script for installing apps on your Mac
 
 2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`，如有需要，请使用`sudo`。
 
-# TODO
-添加用户自定义软件
+# List 
+目前已经列入安装清单的软件包如下
+| 名称 | 类别 | 介绍 |
+| :--: | :--: | :--: |
+| IINA |  GUI | 视频播放 |
+|alfred|  GUI | spotlight的替代品|
+|iterm2|  GUI | 优秀的Mac终端工具|
+|google-chrome| GUI |谷歌浏览器|
+|firefox| GUI|火狐浏览器|
+|wireshark| GUI |网络抓包工具|
+|etcher| GUI | U盘烧录工具|
+|telegram-desktop|GUI|聊天工具Telegram|
+|intellij-idea|GUI|jetbrains, Java IDE|
+|pycharm|GUI|jetbrains，Python IDE|
+|clion|GUI|jetbrains, C && C++  IDE|
+|datagraip|GUI|jetbrains, Database IDE|
+|webstorm|GUI|jetbrains, Web front end IDE|
+|mysql|CLI|MySQL数据库|
+|wget|GLI|网络下载器|
+|aria2|CLI|网络下载器|
+|tree|CLI|图形化显示目录内容|
+|等待补充|||
