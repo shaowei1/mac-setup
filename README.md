@@ -1,4 +1,4 @@
-## Mac-setup
+## Mac-setup 🍇
 [![Build Status](https://api.travis-ci.com/jsycdut/mac-setup.svg?branch=master)](https://travis-ci.com/jsycdut/mac-setup)
 ## Introduction 🙉
 🐼 If you are a non-chinese speaker, please check out the en-branch of this project
