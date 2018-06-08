@@ -57,9 +57,9 @@ install_cli_app(){
 	done
 }
 
-echo "按下任意键继续，如需退出，请按Ctrl C"
+
 # 这里只是用于提示用户，使用Ctrl C退出
-read user_command
+read -t 5 -p "按下任意键继续，如需退出，请按Ctrl C" user_command
 if command -v brew > /dev/null 2>&1; then
 	echo -e '您的Mac已经安装了homebrew，即将为您安装列表中的软件包🍻  \n'
 else
