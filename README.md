@@ -1,5 +1,6 @@
+## Mac-setup
 [![Build Status](https://api.travis-ci.com/jsycdut/mac-setup.svg?branch=master)](https://travis-ci.com/jsycdut/mac-setup)
-## Mac-setup 🙉
+## Introduction 🙉
 🐼 If you are a non-chinese speaker, please check out the en-branch of this project
 
 这是一个为你的Mac自动安装软件的Bash脚本，让你抽出时间喝咖啡而不是把时间花费在下载和安装你需要的软件。
