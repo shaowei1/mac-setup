@@ -1,5 +1,4 @@
 # mac-setup
-A simple script for installing apps on your Mac
 这是一个为你的Mac自动安装软件的Bash脚本，让你抽出时间喝咖啡而不是把时间花费在下载和安装你需要的软件。
 
 # Why?
@@ -8,7 +7,7 @@ A simple script for installing apps on your Mac
 # How?
 1. 克隆本仓库到您的电脑
 
-2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`，如有需要，请使用`sudo`。
+2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`
 
 # List 
 目前已经列入安装清单的软件包如下
@@ -32,3 +31,12 @@ A simple script for installing apps on your Mac
 |aria2|CLI|网络下载器|
 |tree|CLI|图形化显示目录内容|
 |等待补充|||
+
+# 使用效果
+> 安装homebrew
+
+![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png)
+
+> 安装好homebrew后使用brew安装app
+
+![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
