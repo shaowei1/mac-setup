@@ -9,7 +9,12 @@
 
 2. 进入仓库目录，要执行安装，只需要执行`./install_app_for_mac.sh`即可。如果提示此脚本没有运行权限，请执行`chmod u+x install_app_for_mac.sh`
 
-# List 
+# 软件清单 
+软件清单分两个，`brew_cask_app_list`为GUI软件包，`brew_cli_app_list`为CLI软件包，这二者都是数组。
+
+## 如何添加自定义的软件包
+这很简单，只需要改写`install_app_for_mac.sh`里面的`brew_cask_app_list`和`brew_cli_app_list`这两个数组即可，你可以删除里面你不想要的软件包，你也可以在对应的数组里面加入你想要的软件包，注意分清GUI和CLI即可。
+
 目前已经列入安装清单的软件包如下
 
 | 名称 | 类别 | 介绍 |
@@ -33,10 +38,10 @@
 |tree|CLI|图形化显示目录内容|
 
 # 使用效果
-> 安装homebrew
+> 安装homebrew，`./install_app_for_mac.sh`
 
 ![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png)
-
-> 安装好homebrew后使用brew安装app
-
 ![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
+
+# 最后
+喜欢就小手一点star一下呗⭐⭐⭐
