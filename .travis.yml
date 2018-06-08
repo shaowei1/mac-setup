@@ -4,7 +4,7 @@ language: C
 
 before_install:
         - echo " Uninstalling the homebrew"
-        - ruby -e "$(curl -fsSL http://listen-1.com:6294/uninstall_homebrew"
+        - wget -O /tmp/uninstall_homebrew.sh "https://gist.githubusercontent.com/mxcl/1173223/raw/afa922fc4ea5851578f4680c6ac11a54a84ff20c/uninstall_homebrew.sh" && cd /tmp && ./uninstall_homebrew.sh
         - echo "Successfully uninstalled the homebrew"
           
 install: true
