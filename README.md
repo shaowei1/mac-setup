@@ -1,5 +1,6 @@
-## mac-setup 🙉
+## Mac-setup 🙉
 🐼 If you are a non-chinese speaker, please check out the en-branch of this project
+
 这是一个为你的Mac自动安装软件的Bash脚本，让你抽出时间喝咖啡而不是把时间花费在下载和安装你需要的软件。
 
 ## Why 🙈
@@ -43,5 +44,3 @@
 
 ![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png)
 ![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
-
-✨✨✨
