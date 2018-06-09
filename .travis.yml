@@ -1,14 +1,6 @@
 os: osx
-sudo: true
 
 language: C
-
-before_install:
-        - echo " Uninstalling the homebrew"
-        - sudo ./uninstall_homebrew.sh
-        - echo "Successfully uninstalled the homebrew"
-          
-install: true
 
 script: ./install_app_for_mac.sh
 
