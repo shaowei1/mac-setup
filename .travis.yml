@@ -5,7 +5,7 @@ language: C
 
 before_install:
         - echo " Uninstalling the homebrew"
-        - ./uninstall_homebrew.sh
+        - sudo ./uninstall_homebrew.sh
         - echo "Successfully uninstalled the homebrew"
           
 install: true
