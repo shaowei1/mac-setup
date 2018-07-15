@@ -23,6 +23,8 @@ brew_cask_app_list=(
 iina
 alfred
 iterm2
+qq
+sogouinput
 google-chrome
 firefox
 wireshark

@@ -26,6 +26,8 @@
 | IINA |  GUI | 视频播放 |
 |alfred|  GUI | spotlight的替代品|
 |iterm2|  GUI | 优秀的Mac终端工具|
+| QQ   |  GUI | 腾讯QQ|
+| sogouinput | GUI | 搜狗输入法|
 |google-chrome| GUI |谷歌浏览器|
 |firefox| GUI|火狐浏览器|
 |wireshark| GUI |网络抓包工具|
