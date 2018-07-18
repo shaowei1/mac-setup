@@ -54,7 +54,7 @@ tree
 
 # 安装CLI软件包
 install_cli_app(){
-	for app in ${brew_cli_app_list[@]};do
+	for app in ${brew_cli_app_list[@]}; do
 		brew install $app
 	done
 }
@@ -65,9 +65,10 @@ read -t 5 -p "按下任意键继续，如需退出，请按Ctrl C，倒计时5�
 if command -v brew > /dev/null 2>&1; then
 	echo -e '您的Mac已经安装了homebrew，即将为您安装列表中的软件包🍻  \n'
 else
-	echo '您的Mac OS尚未安装homebrew，正准备为您安装🍻  '
+	echo -e '您的Mac OS尚未安装homebrew，正准备为您安装🍻  \n'
 	install_homebrew
 	brew update
 fi
+
 install_cask_app
 install_cli_app
