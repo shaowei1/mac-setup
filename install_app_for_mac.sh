@@ -50,6 +50,7 @@ wget
 mysql
 aria2
 tree
+vim
 )
 
 # 安装CLI软件包
