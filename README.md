@@ -27,6 +27,7 @@
 |alfred|  GUI | spotlight的替代品|
 |iterm2|  GUI | 优秀的Mac终端工具|
 | QQ   |  GUI | 腾讯QQ|
+| typora|  GUI | markdown编辑预览工具|
 | sogouinput | GUI | 搜狗输入法|
 |google-chrome| GUI |谷歌浏览器|
 |firefox| GUI|火狐浏览器|

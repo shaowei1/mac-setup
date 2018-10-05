@@ -20,6 +20,7 @@ install_homebrew(){
 # 在这里添加或者删除你需要的GUI软件包名称
 
 brew_cask_app_list=(
+typora
 iina
 alfred
 iterm2
