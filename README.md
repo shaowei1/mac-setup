@@ -1,5 +1,11 @@
 ## Mac-setup 🍇
 [![Build Status](https://api.travis-ci.com/jsycdut/mac-setup.svg?branch=master)](https://travis-ci.com/jsycdut/mac-setup)
+
+## TODO
+
+接下来打算对脚本进行大改，一来是脚本确实太简单，自己看着都觉得难受，二来是网络环境确实是个问题，如果让用户自己配置好shadowsocks，有的人可能根本没接触过（其实还是我自己懒，就想敲个回车就了事），所以要加上自动配置网络环境的部分，三来就是要将安装选项列出来，让用户选择，将界面整的酷炫点。思路都摆在这里了，一点点的来吧。
+
+
 ## Introduction 🙉
 🐼 If you are a non-chinese speaker, please check out the en-branch of this project
 
@@ -63,3 +69,5 @@
 
 ## Travis CI✨
 我在仓库里面加入了Travis的支持，就目前Travis的报告来看，这个脚本是大体成功的，为什么是大体呢，因为可以在报告里面看到Intellij IDEA和Wireshark两个显示error，具体失败原因是下载镜像失败，这可能和网络问题有关，但是其他的软件包都正常安装了，至于失败的俩嘛，就手动安装吧。祝大家使用愉快！
+
+
