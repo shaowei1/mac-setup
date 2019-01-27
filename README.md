@@ -64,8 +64,8 @@
 ## 使用效果 🐈
 > 安装homebrew，`./install_app_for_mac.sh`
 
-![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-1-isntall-homebrew.png)
-![](https://raw.githubusercontent.com/jsycdut/mac-setup/master/step-2-install-your-app.png)
+![](https://raw.githubusercontent.com/jsycdut/photos/master/mac-setup/install-homebrew.png)
+![](https://raw.githubusercontent.com/jsycdut/photos/master/mac-setup/install-app.png)
 
 ## Travis CI✨
 我在仓库里面加入了Travis的支持，就目前Travis的报告来看，这个脚本是大体成功的，为什么是大体呢，因为可以在报告里面看到Intellij IDEA和Wireshark两个显示error，具体失败原因是下载镜像失败，这可能和网络问题有关，但是其他的软件包都正常安装了，至于失败的俩嘛，就手动安装吧。祝大家使用愉快！
