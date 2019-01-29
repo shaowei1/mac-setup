@@ -1,6 +1,9 @@
 ## Mac-setup 🍇
 [![Build Status](https://api.travis-ci.com/jsycdut/mac-setup.svg?branch=master)](https://travis-ci.com/jsycdut/mac-setup)
 
+目前项目正在改动中，大家不要使用啊（逃
+
+
 ## TODO
 
 1. 更新软件包为用户手动选择
