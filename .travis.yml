@@ -2,7 +2,7 @@ os: osx
 
 language: C
 
-script: ./install_app_for_mac.sh
+script: ./install.sh
 
 after_success: 
         - brew list | cat
