@@ -11,13 +11,18 @@ cat << -EOF
 ############################################################
 -EOF
 
-# 安装Homebrew
+# 全局变量
+row_number=0
+column_number=0
+type=cli
+
+# 安装Homebrew并换TUNA源
 install_homebrew() {
-  if command -v brew > /dev/null 2>&1; then
+  if `command -v brew > /dev/null 2>&1`; then
     echo 'Homebrew已安装'
   else
     echo '正在安装Homebrew'
-	  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     if [[ $? -eq 0  ]]; then
       echo 'Homebrew安装成功'
     else
@@ -29,69 +34,134 @@ install_homebrew() {
   echo '为了让brew运行更加顺畅，将使用清华大学TUNA提供的镜像'
   cd "$(brew --repo)"
   git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
-  
+
   cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
   git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
   brew update
 }
 
-# 图形化软件包清单
-brew_gui_app_list=(
-'qq 腾讯QQ'
-'wechat 微信'
-'telegram-desktop 聊天工具Telegram（电报）'
-'neteasemusic 网易云音乐'
-'iina 视频播放器'
-'typora Markdown编辑器'
-'alfred 软件启动工具'
-'iterm2 终端模拟器'
-'google-chrome 谷歌浏览器'
-'firefox 火狐浏览器'
-'wireshark 抓包工具Wireshark'
-'etcher 启动盘制作工具'
-'intellij-idea JVM平台语言IDE'
-'pycharm Python开发工具'
-'clion C以及C++开发工具'
-'datagrip 数据库操作的瑞士军刀'
-'webstorm 前端开发利器'
-)
+# 检查是否已安装某软件包
+check_installation() {
+  brew list -l | grep $1
+  if [[ $? -eq 0 ]]; then
+     return 0
+  fi
 
-# 命令行软件包清单
-brew_cli_app_list=(
-'wget 命令行下载工具'
-'mysql MySQL数据库'
-'aria2 又一个下载工具'
-'tree 属性目录展示'
-'vim 编辑器之神Vim'
-'curl URL处理工具'
-'shadowsocks-libev Shadowsocks命令行客户端'
-)
-
-# 菜单
-menu() {
-  for((i=0; i<${#brew_cli_app_list[@]}; i++)); do
-    echo
-    echo `expr $i + 1` ' ' ${brew_cli_app_list[i]}
-  done    
-
-  for((i=0; i<${#brew_gui_app_list[@]}; )); do
-    echo
-    printf "%-4s %-10s %-4s %-10s %-4s %-4s\n" `expr $i + 1` ${brew_gui_app_list[i]} `expr $i + 2` ${brew_gui_app_list[i++]} `expr $i + 2` ${brew_gui_app_list[i++]}
-    #let i+=3
-  done    
+  return 1
 }
 
-# 安装命令行软件包
-install_cli_apps() {
-  :
+# 使用brew安装软件包
+install() {
+  check_installation $1
+  if [[ $? -eq 0 ]]; then
+    echo $1 已安装，跳过...
+  else
+    echo 正在安装 $1
+    if [[ "$type" == "cli" ]]; then
+      brew install $1 > /dev/null
+    else
+      brew cask install $1 > /dev/null
+    fi
+    echo 安装成功 $1
+  fi
 }
 
-# 安装图形化软件包
-install_gui_apps() {
-  :
+# 显示菜单
+show_menu() {
+  echo
+  read -t 10 -p "请选择要显示的软件包菜单列表类型 [0]命令行 [1]图形化(默认)：" ans
+  echo
+
+  case $ans in
+    0) cat cli.txt && type="cli"
+    ;;
+    1) cat gui.txt && type="gui"
+    ;;
+    *) cat gui.txt && type="gui"
+    ;;
+  esac
+
+  echo
 }
 
+# 检查AWK是否可用
+check_awk() {
+  if ! `command -v awk > /dev/null`; then
+    echo 未检测到AWK，请先安装AWK再执行本程序...
+    exit 127
+  fi
+}
 
-# 这里只是用于提示用户，使用Ctrl C退出
-#read -t 5 -p "按下任意键继续，如需退出，请按Ctrl C，倒计时5秒" user_command
-menu
+# 利用awk，从cli.txt gui.txt两文件中截取软件包名称
+get_package_name() {
+  local file_name=$1
+  local row=$2
+  local col=$3
+  awk -vline=$row -vfield=$col '{if(NR==line){print $field}}' $file_name
+}
+
+# 计算与软件名称编号对应的行和列号码
+# 不要破坏cli.txt gui.txt文件排版
+# 否则会导致计算行列值失败，进而无法提取出正确的软件包名称
+locate() {
+  local tmp=`expr $1 + 2`
+  row_number=`expr $tmp \/ 3`
+  tmp=`expr $1 % 3`
+  [ $tmp -eq 0 ] && tmp=3
+  column_number=`expr $tmp \* 3 - 1`
+}
+
+cat << EOF
+
+     Homebrew，真正的OS X缺失的包管理器
+     使用本脚本，需要注意一些事情
+
+=>1. 安装QQ 微信 Intellij IDEA或者pycharm之类的图形化软件
+     可能需要你输入用户密码，这是Homebrew的规则，所以
+     希望您在安装图形化软件的时候，将您的咖啡带到电脑旁边喝
+
+=>2. Homebrew的输出很长很多，我也没有隐藏这些输出，目的是希望
+     使用者看见程序具体做了什么，因为 Dont't be evil
+
+     最后，祝使用愉快 (:
+EOF
+
+# 程序入口
+while : ; do
+  show_menu
+  read -t 10 -p "请输入您想要安装的软件包的编号（多个软件包请用空格分隔，直接回车则全部安装）" ans
+  IFS=$'\n'
+  read -t 10 -d "" -ra arr <<< "${ans//' '/$'\n'}" # 本脚本中最喜欢的一句代码了
+
+  # 处理单纯的回车
+  if [[ "${#arr[@]}" -eq 0 ]]; then
+    lines=`wc -l "$type"".txt" | cut -d " " -f 1`
+    count=`expr $lines \* 3`
+    for((i=0; i<$count; i++)); do
+      arr[$i]=`expr $i + 1`
+    done
+  fi
+
+  for app in ${arr[*]}; do
+    echo $app
+    if [ $app -eq $app 2>/dev/null ]; then
+      :
+    else
+      continue
+    fi
+
+    locate $app
+    name=`get_package_name "$type"".txt" $row_number $column_number`
+    [ -z "$name" ] && continue
+    echo $name
+    #install $app
+  done
+
+  read -t 10 -p "是否继续查看菜单列表，Y/y继续，N/n退出 ：" ans
+  case $ans in
+    Y|y|"") :
+    ;;
+    *) break
+    ;;
+  esac
+done
