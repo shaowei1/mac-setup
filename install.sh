@@ -42,7 +42,12 @@ install_homebrew() {
 
 # 检查是否已安装某软件包
 check_installation() {
-  brew list -l | grep $1
+  if [[ $type == "cli" ]]; then
+    brew list -l | grep $1 > /dev/null 
+  else
+    brew cask list -1 | grep $1 > /dev/null
+  fi
+
   if [[ $? -eq 0 ]]; then
      return 0
   fi
@@ -59,10 +64,16 @@ install() {
     echo 正在安装 $1
     if [[ "$type" == "cli" ]]; then
       brew install $1 > /dev/null
+      echo $?
     else
       brew cask install $1 > /dev/null
     fi
-    echo 安装成功 $1
+
+    if [[ $? -eq 0 ]]; then
+      echo "安装成功" $1
+    else
+      echo "安装失败" $1
+    fi
   fi
 }
 
@@ -97,7 +108,7 @@ get_package_name() {
   local file_name=$1
   local row=$2
   local col=$3
-  awk -vline=$row -vfield=$col '{if(NR==line){print $field}}' $file_name
+  awk -v line=$row -v field=$col '{if(NR==line){print $field}}' $file_name
 }
 
 # 计算与软件名称编号对应的行和列号码
@@ -131,11 +142,11 @@ while : ; do
   show_menu
   read -t 10 -p "请输入您想要安装的软件包的编号（多个软件包请用空格分隔，直接回车则全部安装）" ans
   IFS=$'\n'
-  read -t 10 -d "" -ra arr <<< "${ans//' '/$'\n'}" # 本脚本中最喜欢的一句代码了
+  read -d "" -ra arr <<< "${ans//' '/$'\n'}" # 本脚本中最喜欢的一句代码了
 
   # 处理单纯的回车
   if [[ "${#arr[@]}" -eq 0 ]]; then
-    lines=`wc -l "$type"".txt" | cut -d " " -f 1`
+    lines=`wc -l "$type"".txt" | awk '{printf $1}'`
     count=`expr $lines \* 3`
     for((i=0; i<$count; i++)); do
       arr[$i]=`expr $i + 1`
@@ -143,7 +154,6 @@ while : ; do
   fi
 
   for app in ${arr[*]}; do
-    echo $app
     if [ $app -eq $app 2>/dev/null ]; then
       :
     else
@@ -153,13 +163,12 @@ while : ; do
     locate $app
     name=`get_package_name "$type"".txt" $row_number $column_number`
     [ -z "$name" ] && continue
-    echo $name
-    #install $app
+    install $name
   done
 
   read -t 10 -p "是否继续查看菜单列表，Y/y继续，N/n退出 ：" ans
   case $ans in
-    Y|y|"") :
+    Y|y) :
     ;;
     *) break
     ;;
