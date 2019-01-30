@@ -37,6 +37,10 @@ install_homebrew() {
 
   cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
   git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+
+  cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+  git remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
+
   brew update
 }
 
@@ -59,9 +63,9 @@ check_installation() {
 install() {
   check_installation $1
   if [[ $? -eq 0 ]]; then
-    echo $1 已安装，跳过...
+    echo "==>" $1 "已安装，跳过..."
   else
-    echo 正在安装 $1
+    echo "==>正在安装" $1
     if [[ "$type" == "cli" ]]; then
       brew install $1 > /dev/null
       echo $?
@@ -70,9 +74,9 @@ install() {
     fi
 
     if [[ $? -eq 0 ]]; then
-      echo "安装成功" $1
+      echo "==>安装成功" $1
     else
-      echo "安装失败" $1
+      echo "==>安装失败" $1
     fi
   fi
 }
@@ -131,8 +135,7 @@ cat << EOF
      可能需要你输入用户密码，这是Homebrew的规则，所以
      希望您在安装图形化软件的时候，将您的咖啡带到电脑旁边喝
 
-=>2. Homebrew的输出很长很多，我也没有隐藏这些输出，目的是希望
-     使用者看见程序具体做了什么，因为 Dont't be evil
+=>2. Homebrew的输出很长很多，所以我就将安装信息都清掉了
 
      最后，祝使用愉快 (:
 EOF
