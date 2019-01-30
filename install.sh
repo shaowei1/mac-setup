@@ -144,6 +144,7 @@ install_homebrew
 while : ; do
   show_menu
   read -t 10 -p "✍️  请输入您想要安装的软件包的编号（多个软件包请用空格分隔，直接回车则全部安装）" ans
+  echo
   IFS=$'\n'
   read -d "" -ra arr <<< "${ans//' '/$'\n'}" # 本脚本中最喜欢的一句代码了
 
