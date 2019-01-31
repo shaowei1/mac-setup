@@ -1,9 +1,0 @@
-os: osx
-
-language: C
-
-script: ./install.sh
-
-after_success: 
-        - brew list | cat
-        - echo "Build Passed"

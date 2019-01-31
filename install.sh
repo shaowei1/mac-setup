@@ -47,7 +47,7 @@ install_homebrew() {
 
   cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-core.git
-  
+
   cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
   git remote set-url origin https://mirrors.ustc.edu.cn/homebrew-cask.git
 
@@ -57,7 +57,7 @@ install_homebrew() {
 # 检查是否已安装某软件包
 check_installation() {
   if [[ $type == "cli" ]]; then
-    brew list -l | grep $1 > /dev/null 
+    brew list -l | grep $1 > /dev/null
   else
     brew cask list -1 | grep $1 > /dev/null
   fi
@@ -94,7 +94,7 @@ install() {
 # 显示菜单
 show_menu() {
   echo
-  read -t 10 -p "✨ 请选择要显示的软件包菜单列表类型 [0]命令行 [1]图形化(默认)：" ans
+  read  -p "✨ 请选择要显示的软件包菜单列表类型 [0]命令行 [1]图形化(默认)：" ans
   echo
 
   case $ans in
@@ -138,12 +138,12 @@ locate() {
 
 # 程序入口
 echo
-echo "🙏  请花3秒时间看一下上述注意事项"
-sleep 3s
+echo "🙏  请花5秒时间看一下上述注意事项"
+sleep 5s
 install_homebrew
 while : ; do
   show_menu
-  read -t 10 -p "✍️  请输入您想要安装的软件包的编号（多个软件包请用空格分隔，直接回车则全部安装）" ans
+  read  -p "✍️  请输入您想要安装的软件包的编号（多个软件包请用空格分隔，直接回车则全部安装）" ans
   echo
   IFS=$'\n'
   read -d "" -ra arr <<< "${ans//' '/$'\n'}" # 本脚本中最喜欢的一句代码了
@@ -170,7 +170,7 @@ while : ; do
     install $name
   done
 
-  read -t 10 -p "📕 是否继续查看菜单列表，Y/y继续，N/n退出 ：" ans
+  read  -p "📕 是否继续查看菜单列表，Y/y继续，N/n退出 ：" ans
   case $ans in
     Y|y) :
     ;;
@@ -178,3 +178,25 @@ while : ; do
     ;;
   esac
 done
+
+# 更改回Homebrew的官方源
+cat << EOF
+  目前正在使用中国科学技术大学的Homebrew源，建议没有配置网络代理的同学，
+  保持现有状况，不要切回官方源，否则会导致以后安装软件包的下载速度缓慢，
+  对于配置了网络代理的同学，也可以选择将源切换回官方的源。
+EOF
+
+sleep 4s
+read  -p "是否需要将Homebrew的源改回为官方源，[Y/y]确认，直接回车将跳过" ans
+case $ans in
+  Y|y)
+    echo "正在将Homebrew的源切换回官方源..."
+    cd "$(brew --repo)"/Library/Taps/homebrew/homebrew-cask
+    git remote set-url origin https://github.com/Homebrew/homebrew-cask
+    cd "$(brew --repo)"
+    git remote set-url origin https://github.com/Homebrew/brew.git
+    cd "$(brew --repo)/Library/Taps/homebrew/homebrew-core"
+    git remote set-url origin https://github.com/Homebrew/homebrew-core
+    echo "已将Homebrew的源切换回官方源."
+  ;;
+esac
