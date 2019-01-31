@@ -1,6 +1,6 @@
 ## Mac-setup 🍇
 
-[![Build Status](https://api.travis-ci.com/jsycdut/mac-setup.svg?branch=master)](https://travis-ci.com/jsycdut/mac-setup)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![made-with-bash](https://img.shields.io/badge/Made%20with-Bash-1f425f.svg)  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 简介 🙉
 
