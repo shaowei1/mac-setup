@@ -46,6 +46,8 @@ git clone https://github.com/jsycdut/mac-setup && cd mac-setup
 chmod u+x install.sh &&./install.sh
 ```
 
+安装软件包的时间，和您的网络情况有关，也和安装目标有关，比如安装包动辄几百MB的CLion，Intellij-IDEA，就需要多花一点时间，请耐心等待，如果等不及，那么，Ctrl+C打断即可跳过当前的安装。
+
 ## 软件清单 🐕
 
 软件清单分两个，`cli.txt gui.txt`，cli.txt中，包含了可以使用`brew install`来安装的一些命令行软件工具，比如wget，vim，curl，node.js，npm等，gui.txt中，包含了使用`brew cask install`来安装的图形化界面工具，比如QQ，微信，网易云音乐，Intelij IDEA等。

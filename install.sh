@@ -186,7 +186,7 @@ cat << EOF
   对于配置了网络代理的同学，也可以选择将源切换回官方的源。
 EOF
 
-sleep 4s
+sleep 1s
 read  -p "是否需要将Homebrew的源改回为官方源，[Y/y]确认，直接回车将跳过" ans
 case $ans in
   Y|y)
